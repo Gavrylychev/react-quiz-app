@@ -3,12 +3,16 @@ import QuestionItem from './QuestionItem';
 
 
 const QuestionsList = (props) => {
+  const questions = props.data.map((question) => {
+    return <QuestionItem data={question} key={question.id}/>
+  });
+
   return (
     <div className="row">
       <div className="col-12">
         <form>
           <div className="form-group">
-            <QuestionItem data={props.data}/>
+            {questions}
           </div>
           <div className="btn-group float-right" role="group">
             <button type="submit" className="btn btn-warning">Очистить форму</button>
