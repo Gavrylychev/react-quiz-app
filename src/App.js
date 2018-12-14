@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div className="container">
           <QuestionsList data={this.props.data}/>
-          <AnswersPage result={this.props.data}/>
+          <AnswersPage data={this.props.data}/>
         </div>
     );
   }
