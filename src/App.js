@@ -9,27 +9,38 @@ class App extends Component {
 
     this.state = {
         totalResult: 110,
-        isAnswered: false,
-        userResult: 0
-      }
-      
-      // this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      // this.handleClearForm = this.handleClearForm.bind(this);
+        userResult: 0,
+        isSelectedRadio: false,
+        inputValue: '',
     }
-    // handleFormSubmit(){
-      //
-      // }
-      //
-      // handleClearForm(){
-        //
-        // }
+      
+    this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleClearForm = this.handleClearForm.bind(this);
+  }
+
+  handleChangeInput(event){
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
+
+  handleFormSubmit(){
+    
+  }
+  
+  handleClearForm(){
+    
+  }
         
   render() {
     this.props = { data : questionsData };
 
     return (
       <div className="container">
-          <QuestionsList data={this.props.data}/>
+          <QuestionsList data={this.props.data} 
+                         inputValue={this.state.inputValue} 
+                         handleChangeInput={this.handleChangeInput}/>
           <AnswersPage data={this.props.data}/>
         </div>
     );
