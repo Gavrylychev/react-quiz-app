@@ -1,6 +1,7 @@
 import React from 'react';
 
 const QuestionItem = (props) => {
+    console.log(props)
     let answers;
     if(props.data.type === 'select'){
         const options = props.data.answers.map((option)=>{
@@ -27,7 +28,9 @@ const QuestionItem = (props) => {
                 <div className='col-12'>
                     <input type="text" 
                     className="form-control" 
-                    placeholder='Введите ответ любым регистром и без ошибок(точно как в ответах выше)' />
+                    placeholder='Введите ответ любым регистром и без ошибок(точно как в ответах выше)' 
+                    value={props.inputValue}
+                    onChange={props.handleChangeInput}/>
                 </div>
             </div>
         );
@@ -35,7 +38,11 @@ const QuestionItem = (props) => {
         const answer = props.data.answers.map((answer)=>{
             return(
                 <div key={answer}>
-                    <input type="checkbox" className="form-check-input" id="ckeckbox" />
+                    <input type="checkbox" 
+                           className="form-check-input" 
+                           id="ckeckbox" 
+                           name={answer} 
+                           onChange={props.handleCheckboxInput}/>
                     <label className="form-check-label" htmlFor="checkbox">{answer}</label>
                 </div>
             );

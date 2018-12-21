@@ -11,10 +11,12 @@ class App extends Component {
         totalResult: 110,
         userResult: 0,
         isSelectedRadio: false,
+        isCheckboxCkecked: false,
         inputValue: '',
     }
       
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    // this.handleCheckboxInput = this.handleCkeckboxInput.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
   }
@@ -23,6 +25,10 @@ class App extends Component {
     this.setState({
       inputValue: event.target.value
     });
+  }
+
+  handleCheckboxInput(event){
+    console.log(event.target)
   }
 
   handleFormSubmit(){
@@ -40,7 +46,8 @@ class App extends Component {
       <div className="container">
           <QuestionsList data={this.props.data} 
                          inputValue={this.state.inputValue} 
-                         handleChangeInput={this.handleChangeInput}/>
+                         handleChangeInput={this.handleChangeInput}
+                         handleCheckboxInput={this.handleCheckboxInput}/>
           <AnswersPage data={this.props.data}/>
         </div>
     );

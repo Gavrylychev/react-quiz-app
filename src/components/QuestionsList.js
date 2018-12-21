@@ -3,13 +3,12 @@ import QuestionItem from './QuestionItem';
 
 
 const QuestionsList = (props) => {
-  console.log(props)
   const questions = props.data.map((question) => {
     return <QuestionItem data={question} 
                          key={question.id}
-                        //  handleChangeInput={handleChangeInput}
-                        //  inputValue={inputValue}
-                         />
+                         handleChangeInput={props.handleChangeInput}
+                         inputValue={props.inputValue}
+                         handleCheckboxInput={props.handleCheckboxInput}/>
   });
 
   return (
