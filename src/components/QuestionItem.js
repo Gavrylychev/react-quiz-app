@@ -1,81 +1,36 @@
 import React from 'react';
+import InputItem from './inputs/InputItem';
+import InputTextItem from './inputs/InputTextItem';
+import SelectItem from './inputs/SelectItem';
 
-const QuestionItem = (props) => {
-    console.log(props)
-    let answers;
-    if(props.data.type === 'select'){
-        const options = props.data.answers.map((option)=>{
-            return(
-                <option key={option}>{option}</option>
-            );
-        });
-        answers = (
-            <select className="form-control" multiple>
-                {options}
-            </select>
-        );
-    }else if(props.data.type === 'input-field'){
-        const answer = props.data.answers.map((answer) => {
-            return(
-                 <div className='col-6' key={answer}>
-                     <label>{answer}</label>
-                 </div>
-            );
-        });
-        answers = (
-            <div className='row'>
-                {answer}
-                <div className='col-12'>
-                    <input type="text" 
-                    className="form-control" 
-                    placeholder='Введите ответ любым регистром и без ошибок(точно как в ответах выше)' 
-                    value={props.inputValue}
-                    onChange={props.handleChangeInput}/>
-                </div>
-            </div>
-        );
-    }else if(props.data.type === 'checkbox'){
-        const answer = props.data.answers.map((answer)=>{
-            return(
-                <div key={answer}>
-                    <input type="checkbox" 
-                           className="form-check-input" 
-                           id="ckeckbox" 
-                           name={answer} 
-                           onChange={props.handleCheckboxInput}/>
-                    <label className="form-check-label" htmlFor="checkbox">{answer}</label>
-                </div>
-            );
-        });
-        answers = (
-            <div className='form-check'>
-                {answer}
-            </div>
-        );
-    }else if(props.data.type === 'radio-button'){
-        const answer = props.data.answers.map((answer)=>{
-            return (
-                <div key={answer}>
-                    <input type="radio" className="form-check-input" id="radio" value={answer} />
-                    <label className="form-check-label" htmlFor="radio">{answer}</label>
-                </div>
-            );
-        });
-        answers = (
-            <div className='form-check'>
-                {answer}
-            </div>
-        );
-    }else{return null}
-
-    return(
-        <div className="form-group" key={props.data.id}>
-            <div className='text-center'>
-                <label>{props.data.question}</label>
-            </div>
-            {answers}
-        </div>
-    );
+const QuestionItem = ({ answers, type, onInputChange, name }) => {
+  return (
+    <div className="row myBorder">
+        { answers.map((answer, index) => { if(type === "checkbox" || type === "radio") { 
+                                      return <div key={answer.label} className="col-12">
+                                                <InputItem 
+                                                  type={type} 
+                                                  label={answer.label}
+                                                  onInputChange={onInputChange}
+                                                  name={name}/>
+                                                {answer.label}
+                                              </div>
+                                      } else {
+                                        return <div key={answer.label} className="col-12">
+                                                  {answer.label}
+                                                </div>
+                                      }                                     
+                                  }) 
+        }
+        { type === "text" && <InputTextItem 
+                                onInputChange={onInputChange} 
+                                name={name} /> }
+        { type === "select" && <SelectItem 
+                                  answers={answers} 
+                                  onInputChange={onInputChange} 
+                                  name={name} /> }
+    </div>
+  )
 }
 
 export default QuestionItem;

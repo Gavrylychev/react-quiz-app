@@ -1,54 +1,63 @@
 export const questionsData = [
   {
     question: "Какие вызовы parseInt возвратят число?",
-    answers: ["parseInt(\"1px\")",
-              "parseInt(\"-1.2\")",
-              'parseInt("0 минут")',
-              'parseInt("$1.2")'],
+    answers: [{ label: 'parseInt("1px")' },
+              { label: 'parseInt("-1.2")' },
+              { label: 'parseInt("0 минут")' },
+              { label: 'parseInt("$1.2")' }],
     correct: {
-      1: "0",
-      2: "1",
-      3: "2"
+      1: 'parseInt("1px")',
+      2: 'parseInt("-1.2")',
+      3: 'parseInt("0 минут")'
     },
     id: 1,
-    type: 'checkbox'
+    type: 'checkbox',
+    name: 'parseInt'
   },
   {
     question: "Какие варианты подключения скрипта являются корректными с точки зрения современного стандарта HTML?",
-    answers: ['<script type="text/javascript" src="my.js"></script>',
-    '<script src="my.js"></script>',
-    '<script src="my.js"/>',
-    '<хачу-javascript отсюда="my.js">'],
-    correct:{
-      1: "1"
+    answers: [{ label: '<script type="text/javascript" src="my.js"></script>' },
+              { label: '<script src="my.js"></script>' },
+              { label: '<script src="my.js"/>' },
+              { label: '<хачу-javascript отсюда="my.js">' }],
+    correct: {
+      1: '<script src="my.js"></script>'
     },
     id: 2,
-    type: 'radio-button'
+    type: 'radio',
+    name: 'addScript'
   },
   {
     question: "Какие конструкции для циклов есть в javascript?",
-    answers: ['Только две: for и while.',
-              'Только одна: for.',
-              'Три: for, while и do...while.'],
-    correct: "2",
+    answers: [{ label: 'Только две: for и while.' },
+              { label: 'Только одна: for.' },
+              { label: 'Три: for, while и do...while.' }],
+    correct: 'Три: for, while и do...while.',
     id: 3,
-    type: 'radio-button'
+    type: 'radio',
+    name: 'loop'
   },
   {
     question: "Сколько параметров можно передать функции?",
-    answers: ['Ровно столько, сколько указано в определении функции',
-              'Сколько указано в определении функции или меньше',
-              'Сколько указано в определении функции или больше',
-              'Любое количество'],
-    correct: "3",
+    answers: [{ label: 'Ровно столько, сколько указано в определении функции'},
+              { label: 'Сколько указано в определении функции или меньше'},
+              { label: 'Сколько указано в определении функции или больше'},
+              { label: 'Любое количество'}],
+    correct: 'Любое количество',
     id: 4,
-    type: 'input-field'
+    type: 'text',
+    name: 'parameters'
   },
   {
     question: "Какой оператор из этих выполняет не только математические операции?",
-    answers: ["-", "/", "+", "*", ">>>"],
-    correct: "2",
+    answers: [{ label:"-"}, 
+              { label: "/"}, 
+              { label: "+"}, 
+              { label: "*"}, 
+              { label: ">>>"}],
+    correct: "+",
     id: 5,
-    type: 'select'
+    type: 'select',
+    name: 'mathParam'
   }
 ];
