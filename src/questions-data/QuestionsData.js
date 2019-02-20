@@ -20,9 +20,7 @@ export const questionsData = [
               { label: '<script src="my.js"></script>' },
               { label: '<script src="my.js"/>' },
               { label: '<хачу-javascript отсюда="my.js">' }],
-    correct: {
-      1: '<script src="my.js"></script>'
-    },
+    correct: { 1: '<script src="my.js"></script>' },
     id: 2,
     type: 'radio',
     name: 'addScript'
@@ -32,7 +30,7 @@ export const questionsData = [
     answers: [{ label: 'Только две: for и while.' },
               { label: 'Только одна: for.' },
               { label: 'Три: for, while и do...while.' }],
-    correct: 'Три: for, while и do...while.',
+    correct: { 1: 'Три: for, while и do...while.'},
     id: 3,
     type: 'radio',
     name: 'loop'
@@ -43,7 +41,7 @@ export const questionsData = [
               { label: 'Сколько указано в определении функции или меньше'},
               { label: 'Сколько указано в определении функции или больше'},
               { label: 'Любое количество'}],
-    correct: 'Любое количество',
+    correct: { 1: 'Любое количество' },
     id: 4,
     type: 'text',
     name: 'parameters'
@@ -55,7 +53,7 @@ export const questionsData = [
               { label: "+"}, 
               { label: "*"}, 
               { label: ">>>"}],
-    correct: "+",
+    correct: { 1 : "+" },
     id: 5,
     type: 'select',
     name: 'mathParam'

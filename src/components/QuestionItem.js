@@ -6,7 +6,7 @@ import SelectItem from './inputs/SelectItem';
 const QuestionItem = ({ answers, type, onInputChange, name }) => {
   return (
     <div className="row myBorder">
-        { answers.map((answer, index) => { if(type === "checkbox" || type === "radio") { 
+        { answers.map((answer) => { if(type === "checkbox" || type === "radio") { 
                                       return <div key={answer.label} className="col-12">
                                                 <InputItem 
                                                   type={type} 
