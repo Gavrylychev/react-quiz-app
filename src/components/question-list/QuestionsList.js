@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { questionsData } from '../questions-data/QuestionsData';
-import QuestionItem from './QuestionItem';
-import ButtonSubmit from './inputs/ButtonSubmit';
-import ButtonClear from './inputs/ButtonClear';
+import { questionsData } from '../../questions-data/QuestionsData';
+import QuestionItem from '../question-item/QuestionItem';
+import ButtonSubmit from '../inputs/ButtonSubmit';
+import ButtonClear from '../inputs/ButtonClear';
 import './QuestionList.css';
 
 class QuestionsList extends Component {
   state = {
     formAnswers: {
       selectedCheckbox: []
-    }
+    },
+    correctAnswers: []
   }
 
   onInputClear = () => { 
@@ -41,7 +42,7 @@ class QuestionsList extends Component {
       if(res.length > 1) {
         return res.map(q => {
          return newFormAnswers.map((answer) => {
-            if(answer.length > 1) {
+            if(answer.length >= 1) {
               if(answer.includes(q)) {
                 if(!answers[i] || !answers[i]['success']) {
                   answers[i] = { success: [] };
@@ -49,20 +50,29 @@ class QuestionsList extends Component {
                 answers[i]['success'].push(q);
               }
             } 
-            if(answer[0] == q) {
-              answers.push({ success: answer });
-            }
           })
+        })
+      } else {
+        return newFormAnswers.map((answerAgain) => {
+          if(answerAgain.length === 1) {        
+            if(res[0] === answerAgain[0]) {
+              answers[i] = {success: answerAgain[0]}
+            } 
+          }
         })
       }
     })
-    console.log(answers)
+    this.setState({
+      correctAnswers: answers
+    }, () => {
+      window.localStorage.setItem('correct', JSON.stringify(answers));
+      this.props.history.push('/result');
+    })
   }
-    
+  
   onInputSubmit = (e) => {
     e.preventDefault();
-    // this.props.history.push('/result');
-    this.handleCompareAnswers(e);
+    this.handleCompareAnswers();
   }
 
   onInputChange = (e) => {

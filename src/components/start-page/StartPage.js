@@ -21,6 +21,10 @@ const styles = theme => ({
   });
   
 
+// getData = () => {
+
+// }
+
 const StartPage = ({ classes }) => {
   return (
     <div className="row justify-content-md-center">
@@ -30,7 +34,9 @@ const StartPage = ({ classes }) => {
                 Hello, in order to start the test, click this button
             </Typography>
             <Link to='/questionslist' style={{ textDecoration: "none" }}>
-                <Button variant="contained" className={classes.button}>
+                <Button variant="contained" 
+                  // onClick={getData} 
+                  className={classes.button}>
                     start
                 </Button>
             </Link>

@@ -6,12 +6,14 @@ import Icon from '@material-ui/core/Icon';
 import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import green from '@material-ui/core/colors/green';
-import { Link } from 'react-router-dom';
 
 const theme = createMuiTheme({
   palette: {
     primary: green,
   },
+  typography: {
+    useNextVariants: true,
+  }
 });
 
 const styles = theme => ({
@@ -31,7 +33,6 @@ const styles = theme => ({
 
 const ButtonSubmit = ({ onInputSubmit, classes }) => {
   return (
-    <Link to='/result' style={{ textDecoration: 'none' }}>
       <MuiThemeProvider theme={theme}>
         <Button 
           variant="contained" 
@@ -39,12 +40,12 @@ const ButtonSubmit = ({ onInputSubmit, classes }) => {
           type="submit"
           alt="clear all answers" 
           className={classes.button}
-          onClick={onInputSubmit}>
+          onClick={onInputSubmit}
+          >
           Submit
           <Icon className={classes.rightIcon}>send</Icon>
         </Button>
       </MuiThemeProvider>
-    </Link>
   )
 }
 

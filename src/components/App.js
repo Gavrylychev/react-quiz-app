@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import StartPage from './components/StartPage';
-import QuestionsList from "./components/QuestionsList";
-import ResultPage from './components/ResultPage';
+import StartPage from './start-page/StartPage';
+import QuestionsList from "./question-list/QuestionsList";
+import ResultPage from './result-page/ResultPage';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {

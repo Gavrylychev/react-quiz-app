@@ -26,8 +26,9 @@ const ButtonClear = ({ onInputClear, classes }) => {
       type="button" 
       color="secondary"
       onClick={onInputClear} 
-      className={classes.button}>
-      Clear All
+      className={classes.button}
+      >
+      Clear All  
       <DeleteIcon className={classes.rightIcon} />
     </Button>
   )

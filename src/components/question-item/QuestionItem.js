@@ -1,7 +1,7 @@
 import React from 'react';
-import InputItem from './inputs/InputItem';
-import InputTextItem from './inputs/InputTextItem';
-import SelectItem from './inputs/SelectItem';
+import InputItem from '../inputs/InputItem';
+import InputTextItem from '../inputs/InputTextItem';
+import SelectItem from '../inputs/SelectItem';
 
 const QuestionItem = ({ answers, type, onInputChange, name }) => {
   return (
